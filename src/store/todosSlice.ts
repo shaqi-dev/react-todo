@@ -53,7 +53,7 @@ export const todosSlice = createSlice({
       const currentTodo = state.find((todo) => todo.id === id);
 
       if (currentTodo != undefined) {
-        state.filter((todo) => todo.id !== id);
+        return state.filter((todo) => todo.id !== id);
       }
     },
     setIsComplete: (state, action: PayloadAction<setIsDoneAction>) => {
