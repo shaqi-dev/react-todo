@@ -24,7 +24,7 @@ const initialState: TodoState[] = [
   {
     id: '0',
     text: 'Make a Todo app',
-    isComplete: false,
+    isComplete: true,
   },
   {
     id: '1',

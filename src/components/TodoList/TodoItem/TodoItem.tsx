@@ -24,7 +24,7 @@ const TodoItem: React.FC<TodoState> = ({ id, text, isComplete }) => {
 
   return (
     <List.Item id={id} >
-      <Checkbox className={chekboxStyle} onChange={onChangeHandler}>
+      <Checkbox className={chekboxStyle} onChange={onChangeHandler} checked={isComplete}>
         {text}
       </Checkbox>
       <DeleteFilled onClick={onDeleteHandler}/>
