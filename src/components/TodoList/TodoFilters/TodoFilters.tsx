@@ -1,31 +1,22 @@
 import React from 'react';
-import { useAppDispatch } from '../../../hooks';
-import { setTodosFilter } from '../../../store/todosFilterSlice';
-import { Button } from 'antd';
+import { useAppDispatch, useAppSelector } from '../../../hooks';
+import { setTodosFilter, selectTodosFilter } from '../../../store/todosFilterSlice';
+import { Radio, RadioChangeEvent } from 'antd';
 
 interface TodoControlsProps {
-  filters: {filter: string, name: string}[],
+  filters: {label: string, value: string}[],
 }
 
 const TodoFilters: React.FC<TodoControlsProps> = ({ filters }) => {
   const dispatch = useAppDispatch();
-  const clickHandler = (filter: string) => {
-    dispatch(setTodosFilter({ filter }))
+  const todosFilter = useAppSelector(selectTodosFilter);
+  
+  const changeHandler = ({target: { value }}: RadioChangeEvent) => {
+    dispatch(setTodosFilter({ filter: value }))
   }
-  return (
-    <div>
-      {
-        filters.map((item, i) => (
-          <Button 
-            key={`todo-filter-${i}`} 
-            type="ghost" 
-            onClick={() => clickHandler(item.filter)}
-          >
-            {item.name}
-          </Button>
-        ))
-      }
-    </div>
+
+  return (  
+    <Radio.Group options={filters} value={todosFilter} onChange={changeHandler} optionType="button" />   
   );
 };
 

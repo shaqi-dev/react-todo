@@ -19,9 +19,9 @@ const TodoList: React.FC = () => {
   const todosFilter = useAppSelector(selectTodosFilter);
 
   const filters = [
-    { filter: 'SHOW_ALL', name: 'All' },
-    { filter: 'SHOW_ACTIVE', name: 'Active' },
-    { filter: 'SHOW_COMPLETED', name: 'Completed' },
+    { label: 'All', value: 'SHOW_ALL' },
+    { label: 'Active', value: 'SHOW_ACTIVE' },
+    { label: 'Completed', value: 'SHOW_COMPLETED' },
   ]
 
   const getVisibleTodos = (filter: string) => {
