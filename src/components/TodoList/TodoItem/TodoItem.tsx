@@ -1,17 +1,28 @@
 import React from 'react';
-import { Checkbox } from 'antd';
+import { useAppDispatch } from '../../../hooks';
+import { TodoState, setIsComplete } from '../../../store/todosSlice';
+import { List, Checkbox } from 'antd';
 import type { CheckboxChangeEvent } from 'antd/es/checkbox';
 import styles from './TodoItem.module.scss';
 
-const onChangeHandler = (e: CheckboxChangeEvent) => {
-  console.log(`checked = ${e.target.checked}`);
-}
 
-const TodoItem: React.FC = () => {
+const TodoItem: React.FC<TodoState> = ({ id, text, isComplete }) => {
+  const dispatch = useAppDispatch();
+
+  const itemStyle = isComplete ? styles.completed : '';
+
+  const onChangeHandler = (e: CheckboxChangeEvent) => {
+    dispatch(setIsComplete({ 
+      id, isComplete: e.target.checked 
+    }));
+  };
+
   return (
-    <div className={styles.root}>
-      <Checkbox onChange={onChangeHandler}>Todo</Checkbox>
-    </div>
+    <List.Item id={id} className={itemStyle}>
+      <Checkbox onChange={onChangeHandler}>
+        {text}
+      </Checkbox>
+    </List.Item>
   );
 }
 
