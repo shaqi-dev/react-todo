@@ -1,7 +1,8 @@
 import React from 'react';
 import { useAppDispatch } from '../../../hooks';
-import { TodoState, setIsComplete } from '../../../store/todosSlice';
+import { TodoState, setIsComplete, removeTodo } from '../../../store/todosSlice';
 import { List, Checkbox } from 'antd';
+import { DeleteFilled } from '@ant-design/icons';
 import type { CheckboxChangeEvent } from 'antd/es/checkbox';
 import styles from './TodoItem.module.scss';
 
@@ -9,7 +10,7 @@ import styles from './TodoItem.module.scss';
 const TodoItem: React.FC<TodoState> = ({ id, text, isComplete }) => {
   const dispatch = useAppDispatch();
 
-  const itemStyle = isComplete ? styles.completed : '';
+  const chekboxStyle = isComplete ? styles.completed : '';
 
   const onChangeHandler = (e: CheckboxChangeEvent) => {
     dispatch(setIsComplete({ 
@@ -17,11 +18,16 @@ const TodoItem: React.FC<TodoState> = ({ id, text, isComplete }) => {
     }));
   };
 
+  const onDeleteHandler = () => {
+    dispatch(removeTodo({ id }));
+  };
+
   return (
-    <List.Item id={id} className={itemStyle}>
-      <Checkbox onChange={onChangeHandler}>
+    <List.Item id={id} >
+      <Checkbox className={chekboxStyle} onChange={onChangeHandler}>
         {text}
       </Checkbox>
+      <DeleteFilled onClick={onDeleteHandler}/>
     </List.Item>
   );
 }
