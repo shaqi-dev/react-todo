@@ -46,7 +46,8 @@ export const todosSlice = createSlice({
       const { text } = action.payload;
       const id = (state[state.length - 1].id + 1).toString();
 
-      state.push({ id, text, isComplete: false })
+      state.push({ id, text, isComplete: false });
+      return state;
     },
     removeTodo: (state, action: PayloadAction<removeTodoAction>) => {
       const { id } = action.payload;
@@ -62,15 +63,16 @@ export const todosSlice = createSlice({
       
       if (currentTodo != undefined) {
         currentTodo.isComplete = isComplete;
+        return state;
       }
     },
   },
 })
 
-export const { addTodo, removeTodo, setIsComplete } = todosSlice.actions
+export const { addTodo, removeTodo, setIsComplete } = todosSlice.actions;
 
 export const selectTodos = (state: RootState) => state.todos;
 export const selectTodosActive = (state: RootState) => state.todos.filter((todo) => todo.isComplete !== true);
 export const selectTodosCompleted = (state: RootState) => state.todos.filter((todo) => todo.isComplete === true);
 
-export default todosSlice.reducer
+export default todosSlice.reducer;
