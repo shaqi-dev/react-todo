@@ -2,16 +2,13 @@ import React from 'react';
 import { useAppDispatch } from '../../hooks';
 import { addTodo } from '../../store/todosSlice';
 import { Form, Input, Button } from 'antd';
+import style from './TodoForm.module.scss';
 
 interface SubmitValues {
   text: string,
 }
 
-const formStyle = {
-  display: 'flex',
-}
-
-const itemStyle = {
+const formItemStyle = {
   margin: '0',
 }
 
@@ -29,13 +26,14 @@ const TodoForm: React.FC = () => {
     <Form 
       form={form}
       name="add-todo"
-      style={formStyle}
+      className={style.root}
       onFinish={onSubmitHandler}
       autoComplete="off"
     >
       <Form.Item
         name="text"
-        style={itemStyle}
+        style={formItemStyle}
+        className={style.input}
         rules={[{ 
           required: true,
           message: 'Please enter your todo task',
@@ -45,8 +43,14 @@ const TodoForm: React.FC = () => {
           placeholder="What needs to be done?"
         />
       </Form.Item>
-      <Form.Item style={itemStyle}>
-        <Button type="primary" htmlType="submit">
+      <Form.Item 
+        style={formItemStyle} 
+        className={style.button}
+      >
+        <Button
+          type="primary"
+          htmlType="submit"
+        >
           Add Todo
         </Button>
       </Form.Item>
