@@ -21,14 +21,18 @@ const TodoControls: React.FC = () => {
   }
 
   return (
-    <div className={style.root}>
-      <span className={style.itemsLeft}>
+    <div className={style.root} data-testid="todoControls">
+      <span className={style.itemsLeft} data-testid="todoCount">
         {itemsLeft}
         {' '}
         items left
       </span>
       <TodoFilters filters={filters} />
-      <Button type="link" onClick={clearCompletedHandler}>
+      <Button 
+        type="link" 
+        onClick={clearCompletedHandler}
+        data-testid="todoClear"
+      >
         Clear completed
       </Button>
     </div>

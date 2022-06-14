@@ -37,6 +37,7 @@ const TodoList: React.FC = () => {
       footer={<TodoControls />}
       bordered
       dataSource={visibleTodos}
+      data-testid="todoList"
       renderItem={(item) => {
         const { id, text, isComplete } = item;
         return <TodoItem id={id} text={text} isComplete={isComplete}/>

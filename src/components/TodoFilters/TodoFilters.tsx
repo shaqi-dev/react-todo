@@ -16,7 +16,7 @@ const TodoFilters: React.FC<TodoControlsProps> = ({ filters }) => {
   }
 
   return (  
-    <Radio.Group options={filters} value={todosFilter} onChange={changeHandler} optionType="button" />   
+    <Radio.Group options={filters} value={todosFilter} onChange={changeHandler} optionType="button" data-testid="todoFilters" />   
   );
 };
 

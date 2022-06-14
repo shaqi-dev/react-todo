@@ -29,6 +29,7 @@ const TodoForm: React.FC = () => {
       className={style.root}
       onFinish={onSubmitHandler}
       autoComplete="off"
+      data-testid="todoForm"
     >
       <Form.Item
         name="text"
@@ -41,6 +42,7 @@ const TodoForm: React.FC = () => {
       >
         <Input 
           placeholder="What needs to be done?"
+          data-testid="todoInput"
         />
       </Form.Item>
       <Form.Item 
@@ -50,6 +52,7 @@ const TodoForm: React.FC = () => {
         <Button
           type="primary"
           htmlType="submit"
+          data-testid="todoSubmit"
         >
           Add Todo
         </Button>

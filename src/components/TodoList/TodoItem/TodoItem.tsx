@@ -23,11 +23,11 @@ const TodoItem: React.FC<TodoState> = ({ id, text, isComplete }) => {
   };
 
   return (
-    <List.Item id={id} className={style.root} >
+    <List.Item id={id} className={style.root} data-testid="todoItem">
       <Checkbox className={`${chekboxStyle} ${style.checkbox}`} onChange={onChangeHandler} checked={isComplete}>
         {text}
       </Checkbox>
-      <DeleteFilled onClick={onDeleteHandler} className={style.deleteIcon}/>
+      <DeleteFilled onClick={onDeleteHandler} className={style.deleteIcon} data-testid="todoDelete"/>
     </List.Item>
   );
 }
