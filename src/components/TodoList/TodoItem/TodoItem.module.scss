@@ -1,6 +1,24 @@
 @use '../../../scss/variables' as *;
 
+.root:hover {
+  transform: translateY(-2px);
+  transition: 150ms all ease-in-out;
+}
+
+.checkbox {
+  width: 100%;
+}
+
 .completed span {
   text-decoration: line-through;
   color: $color-text-disabled;
+}
+
+.deleteIcon {
+  font-size: 1.8rem;
+}
+
+.deleteIcon:hover {
+  color: $color-icon-red;
+  transition: 150ms all ease-in-out;
 }

@@ -4,13 +4,13 @@ import { TodoState, setIsComplete, removeTodo } from '../../../store/todosSlice'
 import { List, Checkbox } from 'antd';
 import { DeleteFilled } from '@ant-design/icons';
 import type { CheckboxChangeEvent } from 'antd/es/checkbox';
-import styles from './TodoItem.module.scss';
+import style from './TodoItem.module.scss';
 
 
 const TodoItem: React.FC<TodoState> = ({ id, text, isComplete }) => {
   const dispatch = useAppDispatch();
 
-  const chekboxStyle = isComplete ? styles.completed : '';
+  const chekboxStyle = isComplete ? style.completed : '';
 
   const onChangeHandler = (e: CheckboxChangeEvent) => {
     dispatch(setIsComplete({ 
@@ -23,11 +23,11 @@ const TodoItem: React.FC<TodoState> = ({ id, text, isComplete }) => {
   };
 
   return (
-    <List.Item id={id} >
-      <Checkbox className={chekboxStyle} onChange={onChangeHandler} checked={isComplete}>
+    <List.Item id={id} className={style.root} >
+      <Checkbox className={`${chekboxStyle} ${style.checkbox}`} onChange={onChangeHandler} checked={isComplete}>
         {text}
       </Checkbox>
-      <DeleteFilled onClick={onDeleteHandler}/>
+      <DeleteFilled onClick={onDeleteHandler} className={style.deleteIcon}/>
     </List.Item>
   );
 }
