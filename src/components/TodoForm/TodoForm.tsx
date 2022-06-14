@@ -1,6 +1,6 @@
 import React from 'react';
-import { useAppDispatch } from '../../../hooks';
-import { addTodo } from '../../../store/todosSlice';
+import { useAppDispatch } from '../../hooks';
+import { addTodo } from '../../store/todosSlice';
 import { Form, Input, Button } from 'antd';
 
 interface SubmitValues {

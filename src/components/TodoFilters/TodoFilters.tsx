@@ -1,6 +1,6 @@
 import React from 'react';
-import { useAppDispatch, useAppSelector } from '../../../hooks';
-import { setTodosFilter, selectTodosFilter } from '../../../store/todosFilterSlice';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { setTodosFilter, selectTodosFilter } from '../../store/todosFilterSlice';
 import { Radio, RadioChangeEvent } from 'antd';
 
 interface TodoControlsProps {

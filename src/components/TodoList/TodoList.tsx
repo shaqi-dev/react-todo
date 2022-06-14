@@ -3,8 +3,8 @@ import { useAppSelector } from '../../hooks';
 import { selectTodos, selectTodosActive, selectTodosCompleted, TodoState } from '../../store/todosSlice';
 import { selectTodosFilter } from '../../store/todosFilterSlice';
 import TodoItem from './TodoItem';
-import TodoForm from './TodoForm';
-import TodoFilters from './TodoFilters';
+import TodoForm from '../TodoForm';
+import TodoControls from '../TodoControls';
 import { List } from 'antd';
 
 export interface Control {
@@ -17,12 +17,6 @@ const TodoList: React.FC = () => {
   const todosActive = useAppSelector(selectTodosActive);
   const todosCompleted = useAppSelector(selectTodosCompleted);
   const todosFilter = useAppSelector(selectTodosFilter);
-
-  const filters = [
-    { label: 'All', value: 'SHOW_ALL' },
-    { label: 'Active', value: 'SHOW_ACTIVE' },
-    { label: 'Completed', value: 'SHOW_COMPLETED' },
-  ]
 
   const getVisibleTodos = (filter: string) => {
     switch (filter) {
@@ -40,7 +34,7 @@ const TodoList: React.FC = () => {
   return (
     <List 
       header={<TodoForm />}
-      footer={<TodoFilters filters={filters} />}
+      footer={<TodoControls />}
       bordered
       dataSource={visibleTodos}
       renderItem={(item) => {
