@@ -44,7 +44,7 @@ export const todosSlice = createSlice({
   reducers: {
     addTodo: (state, action: PayloadAction<addTodoAction>) => {
       const { text } = action.payload;
-      const id = (state[state.length - 1].id + 1).toString();
+      const id = (state.length > 0 ? state[state.length - 1].id + 1 : 1).toString();
 
       state.push({ id, text, isComplete: false });
       return state;
